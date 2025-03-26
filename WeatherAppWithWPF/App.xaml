@@ -1,0 +1,127 @@
+﻿<Application x:Class="WeatherAppWithWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WeatherAppWithWPF"
+             xmlns:converters="clr-namespace:WeatherAppWithWPF.Converters"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Converters -->
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+
+            <!-- Styles -->
+            <Style x:Key="DefaultButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="Padding" Value="10,5"/>
+                <Setter Property="Background" Value="#007ACC"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="4">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#005A9E"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <!-- Style cho TextBlock tiêu đề -->
+            <Style x:Key="TitleTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="32"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,0,30"/>
+            </Style>
+
+            <Style x:Key="WeatherLocationStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="28"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="WeatherTempStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="48"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,10"/>
+            </Style>
+
+            <Style x:Key="WeatherDescriptionStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,0,20"/>
+            </Style>
+
+            <Style x:Key="WeatherDetailLabelStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Foreground" Value="#CCFFFFFF"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="WeatherDetailValueStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="ErrorMessageStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="#FFFF4444"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="0,10"/>
+            </Style>
+            <Style x:Key="ModernTextBoxStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Padding" Value="10,5"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="Foreground" Value="#2C3E50"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="#CCCCCC"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="border" 
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="8">
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                Focusable="false" 
+                                HorizontalScrollBarVisibility="Hidden" 
+                                VerticalScrollBarVisibility="Hidden"
+                                Padding="{TemplateBinding Padding}"
+                                VerticalAlignment="Center"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#007ACC"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter TargetName="border" Property="BorderThickness" Value="2"/>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#007ACC"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
